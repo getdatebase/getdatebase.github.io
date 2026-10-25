@@ -1,0 +1,52 @@
+/* Datebase sitesi: uygulamadaki tasarım sisteminin aynısı (CLAUDE.md).
+   Koyu varsayılan, telefon açık temadaysa açık. */
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0B0B0B;
+  --text: #F4F4F2;
+  --muted: #8E8E8C;
+  --line: rgba(255, 255, 255, 0.08);
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #FAFAF8;
+    --text: #141414;
+    --muted: #6B6A66;
+    --line: rgba(0, 0, 0, 0.08);
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 16px/1.45 'Host Grotesk', system-ui, sans-serif;
+}
+main { max-width: 640px; margin: 0 auto; padding: 32px 20px 64px; }
+.mark {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 40px;
+}
+h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.8px; line-height: 1.1; margin: 0 0 8px; }
+h2 { font-size: 20px; font-weight: 500; letter-spacing: -0.3px; margin: 32px 0 8px; }
+p, li { color: var(--text); }
+ul { padding-left: 20px; margin: 0; }
+li { margin-bottom: 8px; }
+a { color: var(--text); }
+.lead { font-size: 20px; font-weight: 500; letter-spacing: -0.3px; line-height: 1.33; }
+.muted { color: var(--muted); }
+.links { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+.links a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+}

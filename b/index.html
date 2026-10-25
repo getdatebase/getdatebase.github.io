@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- "Birlikte seç" davet linki: /b/?k=KOD. Uygulamayı açar (lib/data/pick_link.dart; site/ klasörü GitHub Pages). -->
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Datebase</title>
+  <style>
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; background: #0B0B0B; color: #F4F4F2;
+      font: 16px/1.45 system-ui, sans-serif; text-align: center; padding: 0 20px; }
+    p { color: #8E8E8C; margin: 12px 0 24px; }
+    a { display: inline-block; padding: 14px 24px; border-radius: 999px;
+      background: #F4F4F2; color: #0B0B0B; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 style="font-size:32px;font-weight:600;letter-spacing:-0.8px;margin:0">Birlikte seçelim</h1>
+    <p id="msg">Datebase açılıyor…</p>
+    <a id="open" href="#">Uygulamada aç</a>
+  </main>
+  <script>
+    var k = (new URLSearchParams(location.search).get('k') || '').toUpperCase();
+    var app = 'datebase://birlikte/' + encodeURIComponent(k);
+    if (/android/i.test(navigator.userAgent)) {
+      app = 'intent://birlikte/' + encodeURIComponent(k) +
+        '#Intent;scheme=datebase;package=app.datebase;end';
+    }
+    document.getElementById('open').href = app;
+    if (/^[A-Z0-9]{6}$/.test(k)) {
+      location.href = app;
+      setTimeout(function () {
+        document.getElementById('msg').textContent =
+          'Açılmadıysa Datebase yüklü olmayabilir. Kod: ' + k;
+      }, 1500);
+    } else {
+      document.getElementById('msg').textContent = 'Bu davet linki eksik.';
+    }
+  </script>
+</body>
+</html>
